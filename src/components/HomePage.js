@@ -3,11 +3,11 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import bgImage from "../../assets/images/en-hero-img.jpeg";
-import "../../assets/css/style.css";
+import bgImage from "../assets/images/en-hero-img.jpeg";
+import "../assets/css/style.css";
 import { Button } from "@mui/material";
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />

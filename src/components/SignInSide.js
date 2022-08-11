@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -9,10 +8,11 @@ import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import bgImage from '../assets/images/en-hero-img.jpeg';
+import Divider from '@mui/material/Divider';
 
+import GoogleAuth from './GoogleAuth';
 
 
 export default function SignInSide() {
@@ -52,13 +52,20 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
+          <Typography component="h1" variant="h5" align='center'>
+              SIGN IN
             </Typography>
+            <span style={{ display: "block" }}>Log in to your account</span>
+          <Box component="form">
+          <Grid container sx={{ my:2 }}>
+                <Grid item xs>
+                  <GoogleAuth />
+                </Grid>
+              </Grid>
+          </Box>
+          
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+              <Divider>or</Divider>
               <TextField
                 margin="normal"
                 required

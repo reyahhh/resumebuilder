@@ -3,7 +3,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "../history";
 import SignInSide from "./SignInSide";
 import SignUp from "./SignUp";
-import LandingPage from "./Home/LandingPage";
+import HomePage from "./HomePage";
 import Header from "./Header";
 
 import Link from "@mui/material/Link";
@@ -38,7 +38,7 @@ const App = () => {
         <Router history={history}>
           <div>
             <Switch>
-              <Route path="/" exact component={LandingPage} />
+              <Route path="/" exact component={HomePage} />
               <Route path="/signin" exact component={SignInSide} />
               <Route path="/signup" exact component={SignUp} />
             </Switch>
