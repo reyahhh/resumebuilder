@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import bgImage from '../assets/images/en-hero-img.jpeg';
+import bgImage from '../../assets/images/en-hero-img.jpeg';
 import Divider from '@mui/material/Divider';
 
 import GoogleAuth from '../GoogleAuth';

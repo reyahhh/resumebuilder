@@ -3,7 +3,9 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import bgImage from "../assets/images/en-hero-img.jpeg";
+
+import heroImg from '../../assets/images';
+
 import "../assets/css/style.css";
 import { Button } from "@mui/material";
 
@@ -92,7 +94,7 @@ export default function HomePage() {
         sm={4}
         md={5}
         sx={{
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: `url(${heroImg})`,
           backgroundRepeat: "no-repeat",
           backgroundColor: (t) =>
             t.palette.mode === "light"
