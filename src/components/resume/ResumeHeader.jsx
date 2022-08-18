@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = () => {
+const ResumeHeader = () => {
   return (
     <div>Header</div>
   )
