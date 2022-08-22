@@ -25,10 +25,6 @@ export default function SignInSide() {
     });
   };
 
-  const onSubmit = (formValues) => {
-    this.props.onSubmit(formValues);
-  };
-
   return (
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -68,7 +64,7 @@ export default function SignInSide() {
               </Grid>
           </Box>
           
-            <Box component="form" Validate onSubmit={this.props.handleSubmit(this.onSubmit)} sx={{ mt: 1 }}>
+            <Box component="form" Validate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <Divider>or</Divider>
               <TextField
                 margin="normal"
