@@ -28,8 +28,7 @@ const Header = () => {
       elevation={0}
       sx={{ boxShadow: 1  }}
     >
-      <Toolbar sx={{ flexWrap: "wrap" }}>
-        <Link
+    <Link
           href="/"
           variant="h6"
           color="primary"
@@ -39,11 +38,10 @@ const Header = () => {
         >
           Resume Builder
         </Link>
-        <nav></nav>
-
           {user && <Button onClick={handleLogout} className='border px-6 py-2 my-4'>
-        Sign out
-      </Button>} 
+              Sign out
+            </Button>} 
+
           {!user &&  <Button href="/signin" variant="outlined" sx={{ my: 1, mx: 1.5 }}>Sign In</Button>}
         
         <Button
@@ -53,7 +51,7 @@ const Header = () => {
         >
           Build resume
         </Button>
-      </Toolbar>
+
     </AppBar>
   );
 };

@@ -12,9 +12,7 @@ import { Button } from "@mui/material";
 
 export default function HomePage() {
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
-      <CssBaseline />
-
+    <>
       <Grid item xs={12} sm={8} md={7} component={Paper} elevation={6} square>
         <Box
           sx={{
@@ -72,6 +70,6 @@ export default function HomePage() {
           backgroundPosition: "center",
         }}
       />
-    </Grid>
+    </>
   );
 }

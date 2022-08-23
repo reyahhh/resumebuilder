@@ -9,13 +9,16 @@ import CustomTheme from "./CustomTheme";
 import Footer from "./Footer";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
+import { CssBaseline, Grid } from '@mui/material';
 
 const App = () => {
   return (
     <ThemeProvider theme={CustomTheme}>
       <AuthContextProvider>
+
+    <CssBaseline />
+      <Grid container component="main" sx={{ height: "100vh" }}>
         <Header />
-        <div className="main">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/signin" element={<SignInSide />} />
@@ -33,7 +36,7 @@ const App = () => {
           <div className="footer">
             <Footer />
           </div>
-        </div>
+        </Grid>
       </AuthContextProvider>
     </ThemeProvider>
   );
