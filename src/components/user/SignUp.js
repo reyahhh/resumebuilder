@@ -23,7 +23,6 @@ export default function SignUp() {
 
    const handleSubmit = async (e) =>  {
     e.preventDefault();
-    console.log(values.password);
     setError('');
     try {
       setLoading(true);

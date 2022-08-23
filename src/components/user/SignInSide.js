@@ -1,33 +1,54 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import bgImage from '../../assets/images/en-hero-img.jpeg';
-import Divider from '@mui/material/Divider';
 
-import GoogleAuth from '../GoogleAuth';
+import { Paper, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, IconButton, InputAdornment, OutlinedInput, Alert, Divider, InputLabel } from "@mui/material";
+import { VisibilityOff, Visibility } from "@mui/icons-material";
 
+import { UserAuth } from "../../contexts/AuthContext";
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+  const [email, setEmail] = useState('');
+  const [values, setValues] = React.useState({
+    password: "",
+    showPassword: false,
+  });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { signIn } = UserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      await signIn(email, values.password)
+      navigate('/account')
+    } catch (e) {
+      setError(e.message)
+      console.log(e.message)
+    }
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
     });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
   };
 
   return (
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
+        {error && <Alert severity="error">{error}</Alert>}
         <Grid
           item
           xs={false}
@@ -57,14 +78,14 @@ export default function SignInSide() {
             </Typography>
             <span style={{ display: "block" }}>Log in to your account</span>
           <Box component="form">
-          <Grid container sx={{ my:2 }}>
+          {/* <Grid container sx={{ my:2 }}>
                 <Grid item xs>
                   <GoogleAuth />
                 </Grid>
-              </Grid>
+              </Grid> */}
           </Box>
           
-            <Box component="form" Validate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <Divider>or</Divider>
               <TextField
                 margin="normal"
@@ -75,17 +96,33 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
+              <InputLabel htmlFor="outlined-adornment-password">
+              Password
+            </InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-password"
+              fullWidth
+              required
+              label="Password"
+              name="password"
+              type={values.showPassword ? "text" : "password"}
+              value={values.password}
+              onChange={handleChange("password")}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
