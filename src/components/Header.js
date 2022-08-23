@@ -22,13 +22,9 @@ const Header = () => {
   };
 
   return (
-    <AppBar
-      position="static"
-      color="secondary"
-      elevation={0}
-      sx={{ boxShadow: 1  }}
-    >
-    <Link
+    <AppBar color="secondary">
+      <Toolbar>
+        <Link
           href="/"
           variant="h6"
           color="primary"
@@ -52,6 +48,7 @@ const Header = () => {
           Build resume
         </Button>
 
+      </Toolbar>
     </AppBar>
   );
 };
