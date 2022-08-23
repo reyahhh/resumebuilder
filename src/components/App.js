@@ -1,40 +1,41 @@
 import React from "react";
-import { Router, Route, Switch } from "react-router-dom";
-import history from "../history";
-import { SignInSide, SignUp } from "./user";
+import { Routes, Route } from "react-router-dom";
+import { Profile, SignInSide, SignUp } from "./user";
 import HomePage from "./homepage/HomePage";
 import Header from "./Header";
 
 import { ThemeProvider } from "@mui/material/styles";
 import CustomTheme from "./CustomTheme";
 import Footer from "./Footer";
-import { AuthProvider } from "../contexts/AuthContext";
-
-
+import { AuthContextProvider } from "../contexts/AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 const App = () => {
-
   return (
-    <AuthProvider>
-      <ThemeProvider theme={CustomTheme}>
+    <ThemeProvider theme={CustomTheme}>
+      <AuthContextProvider>
         <Header />
         <div className="main">
-          <Router history={history}>
-            <div>
-              <Switch>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/signin" exact component={SignInSide} />
-                <Route path="/signup" exact component={SignUp} />
-              </Switch>
-            </div>
-          </Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signin" element={<SignInSide />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route
+              path="/account"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
 
           <div className="footer">
             <Footer />
           </div>
         </div>
-      </ThemeProvider>
-    </AuthProvider>
+      </AuthContextProvider>
+    </ThemeProvider>
   );
 };
 

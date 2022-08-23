@@ -1,22 +1,40 @@
 import * as React from "react";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
-import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, FormControl, OutlinedInput, IconButton, InputAdornment, InputLabel, FormGroup } from "@mui/material";
+import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, FormControl, OutlinedInput, IconButton, InputAdornment, InputLabel, Alert } from "@mui/material";
 
-import { useAuth } from "../../contexts/AuthContext";
+import { UserAuth } from "../../contexts/AuthContext";
 
 
 export default function SignUp() {
-  // const { signup } = useAuth()
+
+  const [ email, setEmail ] = useState('');
+  const [ error, setError ] = useState('');
+  const [ loading, setLoading ] = useState(false);
+  const navigate = useNavigate()
   const [values, setValues] = React.useState({
     password: "",
     showPassword: false,
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log(data.get("lastName"));
+  const { createUser } = UserAuth();
+
+   const handleSubmit = async (e) =>  {
+    e.preventDefault();
+    console.log(values.password);
+    setError('');
+    try {
+      setLoading(true);
+      await createUser(email, values.password);
+      navigate('/account')
+    } catch(e) {
+      setError(e.message);
+      console.log(e.message);
+    }
+    setLoading(false);
+
   };
 
   const handleClickShowPassword = () => {
@@ -37,6 +55,9 @@ export default function SignUp() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+
+      {error && <Alert severity="error">{error}</Alert>}
+
       <Box
         sx={{
           marginTop: 8,
@@ -52,6 +73,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
+        
         <Box
           component="form"
           noValidate
@@ -59,30 +81,8 @@ export default function SignUp() {
           sx={{ mt: 3, display: "flex", flexDirection: "column",
           alignItems: "justify", }}
         >
-          <FormGroup row>
-            <FormControl item xs={12} sm={6}>
-              <TextField
-                autoComplete="given-name"
-                name="firstName"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </FormControl>
-            <FormControl item xs={12} sm={6}>
-              <TextField
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="family-name"
-              />
-            </FormControl>
-          </FormGroup>
-          <FormControl item xs={12}>
+      
+          <FormControl xs={12}>
             <TextField
               required
               fullWidth
@@ -91,9 +91,10 @@ export default function SignUp() {
               name="email"
               autoComplete="email"
               margin="normal"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </FormControl>
-          <FormControl item xs={12}>
+          <FormControl  xs={12}>
             <InputLabel htmlFor="outlined-adornment-password">
               Password
             </InputLabel>
@@ -102,6 +103,7 @@ export default function SignUp() {
               fullWidth
               required
               label="Password"
+              name="password"
               type={values.showPassword ? "text" : "password"}
               value={values.password}
               onChange={handleChange("password")}
@@ -119,7 +121,8 @@ export default function SignUp() {
               }
             />
           </FormControl>
-          <FormControl item xs={12}>
+
+          <FormControl  xs={12}>
             <FormControlLabel
               control={<Checkbox value="allowExtraEmails" color="primary" />}
               label="I want to receive inspiration, marketing promotions and updates via email."
@@ -130,11 +133,12 @@ export default function SignUp() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            disabled={loading}
           >
             Sign Up
           </Button>
           <Grid container justifyContent="flex-end">
-            <Grid item>
+            <Grid >
               <Link href="#" variant="body2">
                 Already have an account? Sign in
               </Link>
