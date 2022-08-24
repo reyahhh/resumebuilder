@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
+import { Grid } from "@mui/material";
 
 const Footer = () => {
   function Copyright(props) {
@@ -20,7 +21,11 @@ const Footer = () => {
       </Typography>
     );
   }
-  return <div><Copyright sx={{ mt: 5 }} /></div>;
+  return (
+    <Grid fullWidth>
+      <Copyright sx={{ mt: 5 }} />
+    </Grid>
+  );
 };
 
 export default Footer;

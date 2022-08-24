@@ -33,9 +33,7 @@ const App = () => {
             />
           </Routes>
 
-          <div className="footer">
-            <Footer />
-          </div>
+          <Footer />
         </Grid>
       </AuthContextProvider>
     </ThemeProvider>
