@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 import { CssBaseline, Grid } from '@mui/material';
+import Introduction from "./guides/Introduction";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/signin" element={<SignInSide />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/introduction" element={<Introduction />} />
             <Route
               path="/account"
               element={
