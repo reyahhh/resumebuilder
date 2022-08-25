@@ -8,7 +8,7 @@ const Footer = () => {
     return (
       <Typography
         variant="body2"
-        color="text.secondary"
+        color="custom.light"
         align="center"
         {...props}
       >
@@ -22,9 +22,11 @@ const Footer = () => {
     );
   }
   return (
-    <Grid fullWidth>
-      <Copyright sx={{ mt: 5 }} />
-    </Grid>
+    <Grid container bgcolor="primary.main">
+      <Grid xs={12}>
+        <Copyright sx={{ my: 5 }} />
+      </Grid>
+  </Grid>
   );
 };
 

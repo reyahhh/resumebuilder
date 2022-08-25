@@ -17,7 +17,7 @@ const App = () => {
       <AuthContextProvider>
 
     <CssBaseline />
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <Grid container component="main">
         <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />

@@ -22,7 +22,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar color="secondary">
+    <AppBar container color="secondary">
       <Toolbar>
         <Link
           href="/"
