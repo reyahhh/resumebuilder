@@ -49,3 +49,9 @@ svg:not(:root) {
         margin-bottom: 5rem;
     }
 }
+
+@media (min-width: 768px)
+.builder-step__icon {
+    width: 20rem;
+    height: 20rem;
+}
