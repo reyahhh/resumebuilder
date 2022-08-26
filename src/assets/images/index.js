@@ -14,7 +14,7 @@ import twitter from "./twitter.svg";
 import greenCheck from "./checkbox.svg";
 
 import iconBuild from "./icon-build.svg";
-import iconCV from "./icon-cv.svg";
+import iconChoose from "./icon-cv.svg";
 import iconDownload from "./icon-download.svg";
 
 export {
@@ -32,6 +32,6 @@ export {
   instagram,
   greenCheck,
   iconBuild,
-  iconCV,
+  iconChoose,
   iconDownload
 };
