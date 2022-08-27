@@ -46,7 +46,7 @@ export default function HomePage() {
           </ul>
 
           <Button
-          href="/introduction"
+          href="/personal_infos"
           variant="contained"
           sx={{ my: 1, mx: 1.5 }}
           size="large">

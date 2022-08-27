@@ -11,6 +11,7 @@ import { AuthContextProvider } from "../contexts/AuthContext";
 import ProtectedRoute from "./ProtectedRoute";
 import { CssBaseline, Grid } from '@mui/material';
 import Introduction from "./guides/Introduction";
+import PersonalInfo from "./resume/PersonalInfo";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/signin" element={<SignInSide />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/introduction" element={<Introduction />} />
+            <Route path="/personal_infos" element={<PersonalInfo />} />
             <Route
               path="/account"
               element={
