@@ -7,19 +7,19 @@ import {
   Typography,
   TextField,
   Button,
+  TextareaAutosize
 } from "@mui/material";
 import React from "react";
 
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-const handleSubmit = () => {
-  
+const handleSubmit = (e) => {
+  e.preventDefault();
 };
 
 const Experience = () => {
-
   const [sDate, setSDate] = React.useState(null);
   const [eDate, setEDate] = React.useState(null);
 
@@ -72,7 +72,7 @@ const Experience = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} md={6}>
             <FormControl xs={12} fullWidth="true">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
@@ -88,7 +88,7 @@ const Experience = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} md={6}>
             <FormControl xs={12} fullWidth="true">
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
@@ -101,6 +101,18 @@ const Experience = () => {
                   renderInput={(params) => <TextField {...params} />}
                 />
               </LocalizationProvider>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <FormControl xs={12} fullWidth="true">
+              <TextareaAutosize
+                aria-label="job description"
+                minRows={3}
+                fullWidth="true"
+                placeholder="Job Description"
+                
+              />
             </FormControl>
           </Grid>
 
