@@ -5,13 +5,24 @@ import {
   Input,
   FormControl,
   Typography,
+  TextField,
   Button,
 } from "@mui/material";
 import React from "react";
 
-const handleSubmit = () => {};
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+const handleSubmit = () => {
+  
+};
 
 const Experience = () => {
+
+  const [sDate, setSDate] = React.useState(null);
+  const [eDate, setEDate] = React.useState(null);
+
   return (
     <Box
       sx={{
@@ -34,36 +45,23 @@ const Experience = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h4">COMPLETE YOUR RESUME HEADING</Typography>
+            <Typography variant="h4">EXPERIENCE</Typography>
             <Typography variant="h6">
-              Employers will use this information to contact you.
+              List your work experience, from the most recent to the oldest.
+              Feel free to use our pre-written examples.
             </Typography>
           </Grid>
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="firstname">First name</InputLabel>
-              <Input id="firstname" />
+              <InputLabel htmlFor="employer">Employer</InputLabel>
+              <Input id="employer" name="employer" />
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="lastname">Last name</InputLabel>
-              <Input id="lastname" fullWidth="true" />
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="my-input">Email address</InputLabel>
-              <Input id="my-input" fullWidth="true" />
-            </FormControl>
-          </Grid>
-
-           <Grid item xs={12}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="address">Address</InputLabel>
-              <Input id="address" multiline minRows={2} />
+              <InputLabel htmlFor="job_title">Job Title</InputLabel>
+              <Input id="job_title" name="job_title" fullWidth="true" />
             </FormControl>
           </Grid>
 
@@ -74,31 +72,48 @@ const Experience = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs={12}>
             <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="zip_code">ZIP code</InputLabel>
-              <Input id="zip_code" fullWidth="true" />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Start Date"
+                  value={sDate}
+                  name="sDate"
+                  onChange={(newValue) => {
+                    setSDate(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormControl xs={12} fullWidth="true">
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="End Date"
+                  value={eDate}
+                  name="eDate"
+                  onChange={(newValue) => {
+                    setEDate(newValue);
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="phone_number">Phone Number</InputLabel>
-              <Input id="phone_number" fullWidth="true" />
-            </FormControl>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Save & Next
+            </Button>
           </Grid>
-
-          <Grid item xs={4}>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Save & Next
-          </Button>
-          </Grid>
-
         </Grid>
       </Box>
     </Box>

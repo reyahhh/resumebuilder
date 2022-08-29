@@ -9,7 +9,10 @@ import {
 } from "@mui/material";
 import React from "react";
 
-const handleSubmit = () => {};
+const handleSubmit = () => {
+    
+
+};
 
 const PersonalInfo = () => {
   return (

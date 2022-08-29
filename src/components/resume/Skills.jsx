@@ -8,10 +8,24 @@ import {
   Button,
 } from "@mui/material";
 import React from "react";
+import { useState } from "react";
 
 const handleSubmit = () => {};
 
 const Skills = () => {
+  const [inputFields, setInputFields] = useState([{ skill: "", rating: "" }]);
+  const handleFormChange = (index, event) => {
+    let data = [...inputFields];
+    data[index][event.target.name] = event.target.value;
+    setInputFields(data);
+  };
+
+  const addFields = () => {
+    let newfield = { skill: "", rating: "" };
+
+    setInputFields([...inputFields, newfield]);
+  };
+  
   return (
     <Box
       sx={{
@@ -34,71 +48,55 @@ const Skills = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h4">COMPLETE YOUR RESUME HEADING</Typography>
-            <Typography variant="h6">
-              Employers will use this information to contact you.
-            </Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="firstname">First name</InputLabel>
-              <Input id="firstname" />
-            </FormControl>
+            <Typography variant="h4">SKILLS</Typography>
+            <Typography variant="h6">List all your related skills.</Typography>
           </Grid>
 
-          <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="lastname">Last name</InputLabel>
-              <Input id="lastname" fullWidth="true" />
-            </FormControl>
-          </Grid>
+          {inputFields.map((input, index) => {
+            return (
+              <div key={index}>
+                <Grid item xs={4}>
+                  <FormControl xs={12} fullWidth="true">
+                    <InputLabel htmlFor="skill">Skill</InputLabel>
+                    <Input
+                      name="skill"
+                      placeholder="Skill"
+                      value={input.skill}
+                      id="skill"
+                      onChange={(event) => handleFormChange(index, event)}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={4}>
+                  <FormControl xs={12} fullWidth="true">
+                    <InputLabel htmlFor="rating">rating</InputLabel>
+                    <Input
+                      name="rating"
+                      placeholder="rating"
+                      value={input.rating}
+                      id="rating"
+                      onChange={(event) => handleFormChange(index, event)}
+                    />
+                  </FormControl>
+                </Grid>
+              </div>
+            );
+          })}
 
           <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="my-input">Email address</InputLabel>
-              <Input id="my-input" fullWidth="true" />
-            </FormControl>
-          </Grid>
-
-           <Grid item xs={12}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="address">Address</InputLabel>
-              <Input id="address" multiline minRows={2} />
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="city">City</InputLabel>
-              <Input id="city" fullWidth="true" />
-            </FormControl>
-          </Grid>
-
-          <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="zip_code">ZIP code</InputLabel>
-              <Input id="zip_code" fullWidth="true" />
-            </FormControl>
+            <button onClick={addFields}>Add More..</button>
           </Grid>
 
           <Grid item xs={4}>
-            <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="phone_number">Phone Number</InputLabel>
-              <Input id="phone_number" fullWidth="true" />
-            </FormControl>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Save & Next
+            </Button>
           </Grid>
-
-          <Grid item xs={4}>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Save & Next
-          </Button>
-          </Grid>
-
         </Grid>
       </Box>
     </Box>
