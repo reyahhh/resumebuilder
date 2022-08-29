@@ -12,6 +12,9 @@ import ProtectedRoute from "./ProtectedRoute";
 import { CssBaseline, Grid } from '@mui/material';
 import Introduction from "./guides/Introduction";
 import PersonalInfo from "./resume/PersonalInfo";
+import Education from "./resume/Education";
+import Skills from "./resume/Skills";
+import Experience from "./resume/Experience";
 
 const App = () => {
   return (
@@ -26,7 +29,11 @@ const App = () => {
             <Route path="/signin" element={<SignInSide />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/introduction" element={<Introduction />} />
+            
             <Route path="/personal_infos" element={<PersonalInfo />} />
+            <Route path="/education" element={<Education />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/experience" element={<Experience />} />
             <Route
               path="/account"
               element={

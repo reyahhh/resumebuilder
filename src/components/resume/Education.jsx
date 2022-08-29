@@ -34,7 +34,7 @@ const Education = () => {
       >
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <Typography variant="h4">COMPLETE YOUR RESUME HEADING</Typography>
+            <Typography variant="h4">ADD YOUR EDUCATIONAL ATTAINMENT</Typography>
             <Typography variant="h6">
               Employers will use this information to contact you.
             </Typography>
