@@ -2,7 +2,8 @@ import { getFirestore, query, getDocs, collection, where, addDoc } from 'firebas
 import {
   SIGN_IN,
   SIGN_OUT,
-  CREATE_USER
+  CREATE_USER,
+  SAVE_INFO
 
 } from './types';
 
@@ -17,4 +18,11 @@ export const signOut = () => {
   return {
     type: SIGN_OUT
   };
+};
+
+export const saveResumeData = (formData) => {
+  return {
+    type: SAVE_INFO,
+    payload: formData
+  }
 };

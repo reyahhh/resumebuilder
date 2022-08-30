@@ -45,49 +45,49 @@ const PersonalInfo = () => {
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
               <InputLabel htmlFor="firstname">First name</InputLabel>
-              <Input id="firstname" />
+              <Input id="firstname" name="firstname" />
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
               <InputLabel htmlFor="lastname">Last name</InputLabel>
-              <Input id="lastname" fullWidth="true" />
+              <Input id="lastname" name="lastname" fullWidth="true" />
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
-              <InputLabel htmlFor="my-input">Email address</InputLabel>
-              <Input id="my-input" fullWidth="true" />
+              <InputLabel htmlFor="emailaddress">Email address</InputLabel>
+              <Input id="emailaddress" name="emailaddress" fullWidth="true" />
             </FormControl>
           </Grid>
 
            <Grid item xs={12}>
             <FormControl xs={12} fullWidth="true">
               <InputLabel htmlFor="address">Address</InputLabel>
-              <Input id="address" multiline minRows={2} />
+              <Input id="address" name="address" multiline minRows={2} />
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
               <InputLabel htmlFor="city">City</InputLabel>
-              <Input id="city" fullWidth="true" />
+              <Input id="city" name="city" fullWidth="true" />
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
               <InputLabel htmlFor="zip_code">ZIP code</InputLabel>
-              <Input id="zip_code" fullWidth="true" />
+              <Input id="zip_code" name="zip_code" fullWidth="true" />
             </FormControl>
           </Grid>
 
           <Grid item xs={4}>
             <FormControl xs={12} fullWidth="true">
               <InputLabel htmlFor="phone_number">Phone Number</InputLabel>
-              <Input id="phone_number" fullWidth="true" />
+              <Input id="phone_number" name="phone_number" fullWidth="true" />
             </FormControl>
           </Grid>
 
