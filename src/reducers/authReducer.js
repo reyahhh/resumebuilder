@@ -1,10 +1,5 @@
 import { SIGN_IN, 
-    SIGN_OUT,
-    REGISTER_SUCCESS,
-    REGISTER_FAIL,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT,
+    SIGN_OUT
  } from '../actions/types';
 
 const INITIAL_STATE = {
